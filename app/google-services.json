@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1064127983291",
+    "project_id": "food-tinder-61ce7",
+    "storage_bucket": "food-tinder-61ce7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064127983291:android:9d6b4ed2e539d3f0c7039e",
+        "android_client_info": {
+          "package_name": "edu.um.feri.pora.foodtinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064127983291-mlcuhad1jfkmobpgu2n138sjimr505df.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvqQ5XkI1WCb4P05oZSpRyQIsQ4qcZLrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064127983291-mlcuhad1jfkmobpgu2n138sjimr505df.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
