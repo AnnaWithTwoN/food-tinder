@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "1064127983291",
-    "project_id": "food-tinder-61ce7",
-    "storage_bucket": "food-tinder-61ce7.appspot.com"
+    "project_number": "386631295391",
+    "firebase_url": "https://tinder-clone-62396-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "tinder-clone-62396",
+    "storage_bucket": "tinder-clone-62396.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1064127983291:android:9d6b4ed2e539d3f0c7039e",
+        "mobilesdk_app_id": "1:386631295391:android:aad06971e7a22620075daa",
         "android_client_info": {
           "package_name": "edu.um.feri.pora.foodtinder"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1064127983291-mlcuhad1jfkmobpgu2n138sjimr505df.apps.googleusercontent.com",
+          "client_id": "386631295391-pbkvvc264gml2sdj7jmvm527jeubof6u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBvqQ5XkI1WCb4P05oZSpRyQIsQ4qcZLrQ"
+          "current_key": "AIzaSyCFUaCvZ_JW68oX83V1BQgCIo_x3UVkwzM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1064127983291-mlcuhad1jfkmobpgu2n138sjimr505df.apps.googleusercontent.com",
+              "client_id": "386631295391-pbkvvc264gml2sdj7jmvm527jeubof6u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

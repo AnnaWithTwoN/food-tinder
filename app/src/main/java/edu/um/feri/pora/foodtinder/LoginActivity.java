@@ -57,7 +57,10 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                     });
+        } else {
+            Toast.makeText(getApplicationContext(), "Fill all fields", Toast.LENGTH_SHORT).show();
         }
+
 
     }
 

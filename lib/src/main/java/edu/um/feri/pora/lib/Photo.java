@@ -1,20 +1,30 @@
 package edu.um.feri.pora.lib;
 
-import java.util.ArrayList;
+import java.util.UUID;
 
 public class Photo {
-    private String path;
-    private ArrayList<String> tags;
+    private String id;
+    private String uri;
+    private String name;
 
-    public Photo(String path) {
-        this.path = path;
+    public Photo(){
     }
 
-    public String getPath() {
-        return path;
+    public Photo(String uri, String name) {
+        this.uri = uri;
+        this.name = name;
+        //id = UUID.randomUUID().toString();
     }
 
-    public ArrayList<String> getTags() {
-        return tags;
+    public String getUri() {
+        return uri;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 }

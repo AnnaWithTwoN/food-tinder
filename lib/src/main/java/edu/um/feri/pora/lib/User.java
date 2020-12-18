@@ -2,44 +2,91 @@ package edu.um.feri.pora.lib;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class User {
+    private String id;
     private String name;
-    private Date birthDate;
-    private ArrayList<Photo> photos;
-    private ArrayList<User> likedBy;
-    private ArrayList<Conversation> conversations;
+    private String photoUri;
+    private List<String> likedBy = new ArrayList<>();
+    private List<String> liked = new ArrayList<>();
+    private List<Conversation> conversations = new ArrayList<>();
 
-    public User(String name, Date birthDate) {
+    public User() { }
+
+    public User(String id, String name, String uri) {
+        this.id = id;
         this.name = name;
-        this.birthDate = birthDate;
-
-        photos = new ArrayList<>();
-        likedBy = new ArrayList<>();
-        conversations = new ArrayList<>();
+        this.photoUri = uri;
     }
 
-    public void addPhoto(Photo photo){
-        photos.add(photo);
+    public boolean hasLiked(String userId){
+        for(String id: liked)
+            if(id.equals(userId))
+                return true;
+        return false;
+    }
+
+    public boolean isLikedBy(String userId){
+        for(String id: likedBy)
+            if(id.equals(userId))
+                return true;
+        return false;
+    }
+
+    public void addLikedBy(String userId){
+        likedBy.add(userId);
+    }
+
+    public void addLiked(String userId){
+        liked.add(userId);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public ArrayList<Photo> getPhotos() {
-        return photos;
+    public String getPhotoUri() {
+        return photoUri;
     }
 
-    public ArrayList<User> getLikedBy() {
+    public void setPhotoUri(String photoUri) {
+        this.photoUri = photoUri;
+    }
+
+    public List<String> getLikedBy() {
         return likedBy;
     }
 
-    public ArrayList<Conversation> getConversations() {
+    public void setLikedBy(List<String> likedBy) {
+        this.likedBy = likedBy;
+    }
+
+    public List<Conversation> getConversations() {
         return conversations;
+    }
+
+    public void setConversations(List<Conversation> conversations) {
+        this.conversations = conversations;
+    }
+
+    public List<String> getLiked() {
+        return liked;
+    }
+
+    public void setLiked(List<String> liked) {
+        this.liked = liked;
     }
 }
