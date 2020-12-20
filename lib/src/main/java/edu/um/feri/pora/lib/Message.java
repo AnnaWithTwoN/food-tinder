@@ -8,7 +8,9 @@ public class Message {
     private int length;
     private Date dateStamp;
 
-    public Message(String body, User sender) {
+    public Message(){ }
+
+    public Message(User sender, String body) {
         this.body = body;
         this.sender = sender;
 
@@ -30,5 +32,21 @@ public class Message {
 
     public Date getDateStamp() {
         return dateStamp;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public void setSender(User sender) {
+        this.sender = sender;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public void setDateStamp(Date dateStamp) {
+        this.dateStamp = dateStamp;
     }
 }

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="signIn"
-        android:text="Sign in"
+        android:text="@string/sign_in"
         app:layout_constraintBottom_toBottomOf="@id/bottomG"
         app:layout_constraintEnd_toStartOf="@+id/rightG"
         app:layout_constraintStart_toStartOf="@+id/leftG"
@@ -19,25 +19,25 @@
 
     <EditText
         android:id="@+id/emailEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:ems="10"
-        android:hint="Enter email"
+        android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/passwordEditText"
         app:layout_constraintEnd_toStartOf="@+id/rightG"
         app:layout_constraintStart_toStartOf="@+id/leftG"
-        app:layout_constraintTop_toTopOf="@id/topG"
+        app:layout_constraintTop_toBottomOf="@id/errorTextView"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/passwordEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:ems="10"
-        android:hint="Enter password"
+        android:hint="@string/enter_password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/signInBtn"
         app:layout_constraintEnd_toStartOf="@+id/rightG"
@@ -76,20 +76,22 @@
     <TextView
         android:id="@+id/errorTextView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="31dp"
+        android:layout_marginBottom="16dp"
         android:textAlignment="center"
         android:textColor="@color/colorError"
-        app:layout_constraintBottom_toTopOf="@+id/bottomG"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/emailEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/loginTextView" />
 
     <Button
         android:id="@+id/goToRegisterBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="goToRegister"
-        android:text="Register"
+        android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rightG"
         app:layout_constraintHorizontal_bias="0.5"
@@ -101,11 +103,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Don't have an account yet?"
+        android:text="@string/don_t_have_an_account_yet"
         app:layout_constraintBottom_toTopOf="@+id/goToRegisterBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottomG"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/loginTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/login"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@id/errorTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/topG"
         app:layout_constraintVertical_chainStyle="packed" />
 </androidx.constraintlayout.widget.ConstraintLayout>

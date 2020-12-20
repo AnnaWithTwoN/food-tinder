@@ -1,4 +1,4 @@
-package edu.um.feri.pora.foodtinder;
+package edu.um.feri.pora.foodtinder.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,13 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -29,9 +27,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.UUID;
-
-import edu.um.feri.pora.lib.Photo;
+import edu.um.feri.pora.foodtinder.R;
 import edu.um.feri.pora.lib.User;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -50,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getSupportActionBar().hide();
 
         mAuth = FirebaseAuth.getInstance();
         name = (EditText) findViewById(R.id.nameEditText);
@@ -87,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    Toast.makeText(getBaseContext(), "Upload successful", Toast.LENGTH_LONG).show();
+                                    //Toast.makeText(getBaseContext(), "Upload successful", Toast.LENGTH_LONG).show();
                                     Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                                     while (!urlTask.isSuccessful());
                                     Uri downloadUrl = urlTask.getResult();
@@ -143,7 +140,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             imageUri = data.getData();
-            //uploadFile();
             Picasso.get().load(imageUri).into(imagePreview);
         }
     }
@@ -152,9 +148,5 @@ public class RegisterActivity extends AppCompatActivity {
         ContentResolver cR = getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
-
-    private void uploadFile(String userId) {
-
     }
 }

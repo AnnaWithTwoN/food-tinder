@@ -1,4 +1,4 @@
-package edu.um.feri.pora.foodtinder;
+package edu.um.feri.pora.foodtinder.rvadapters;
 
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import edu.um.feri.pora.foodtinder.R;
 import edu.um.feri.pora.lib.User;
 
 public class CardStackAdapter extends RecyclerView.Adapter<CardStackAdapter.ViewHolder> {

@@ -10,7 +10,7 @@ public class User {
     private String photoUri;
     private List<String> likedBy = new ArrayList<>();
     private List<String> liked = new ArrayList<>();
-    private List<Conversation> conversations = new ArrayList<>();
+    private List<String> conversations = new ArrayList<>();
 
     public User() { }
 
@@ -18,6 +18,10 @@ public class User {
         this.id = id;
         this.name = name;
         this.photoUri = uri;
+    }
+
+    public void addConversation(String id){
+        conversations.add(id);
     }
 
     public boolean hasLiked(String userId){
@@ -74,11 +78,11 @@ public class User {
         this.likedBy = likedBy;
     }
 
-    public List<Conversation> getConversations() {
+    public List<String> getConversations() {
         return conversations;
     }
 
-    public void setConversations(List<Conversation> conversations) {
+    public void setConversations(List<String> conversations) {
         this.conversations = conversations;
     }
 
