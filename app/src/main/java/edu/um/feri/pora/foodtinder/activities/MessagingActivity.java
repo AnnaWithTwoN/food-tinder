@@ -26,6 +26,8 @@ public class MessagingActivity extends AppCompatActivity {
 
     private DatabaseReference databaseRef;
 
+    //Pozdravljeni, imam vprasanje glede 9 vaje PORA - jaz bi zelela imeti service, ki bi ves cas tekel in poslusal dogodke od baze. Zaradi nove police od androida jaz ne morem uporabiti navaden service, ker operacijska sistema ga bo ubila. Kar bi uporabila namesto tega? Foreground service mi ni vsec, ker moram kazati grdo obvestilo, jobService pa ne more teci nenehno
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ public class MessagingActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.messagingContainer);
         //recyclerView.setHasFixedSize(true);
         recyclerViewLayoutManager = new LinearLayoutManager(this);
-        recyclerViewAdapter = new MessagesAdapter(convId, app.getUser().getId());
+        recyclerViewAdapter = new MessagesAdapter(getBaseContext(), convId, app.getUser().getId());
 
         recyclerView.setLayoutManager(recyclerViewLayoutManager);
         recyclerView.setAdapter(recyclerViewAdapter);

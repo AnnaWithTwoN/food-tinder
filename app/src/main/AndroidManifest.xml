@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.ConversationsActivity"></activity>
-        <activity android:name=".activities.MessagingActivity" />
+        <activity android:name=".activities.MessagingActivity" android:launchMode="singleTop"/>
         <activity android:name=".activities.ExplorerActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.LoginActivity" />
