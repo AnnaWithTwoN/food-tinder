@@ -106,7 +106,7 @@ public class ExplorerActivity extends AppCompatActivity {
                     databaseRef.child("users").child(prevUserOnCard.getId()).setValue(prevUserOnCard);
 
                     Intent i = new Intent(getBaseContext(), MessagingActivity.class);
-                    i.putExtra("id", id);
+                    i.putExtra("convId", id);
                     startActivity(i);
                     break;
 

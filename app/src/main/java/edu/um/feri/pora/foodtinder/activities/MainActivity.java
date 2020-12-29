@@ -2,6 +2,7 @@ package edu.um.feri.pora.foodtinder.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +21,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 import edu.um.feri.pora.foodtinder.MyApplication;
+import edu.um.feri.pora.foodtinder.NewMessagesService;
 import edu.um.feri.pora.foodtinder.R;
 import edu.um.feri.pora.lib.User;
 
@@ -66,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
                     ((TextView) findViewById(R.id.emailTextView)).setText(currentUser.getEmail());
                     ImageView image = (ImageView) findViewById(R.id.imageView);
                     Picasso.get().load(user.getPhotoUri()).into(image);
+
+                    startNewMessagesListener();
                 }
 
                 @Override
@@ -89,6 +95,18 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    private void startNewMessagesListener(){
+        // check if not currently running
+        Intent serviceIntent = new Intent(this, NewMessagesService.class);
+        serviceIntent.putStringArrayListExtra("convIds", (ArrayList<String>) user.getConversations());
+        serviceIntent.putExtra("userId", user.getId());
+        ContextCompat.startForegroundService(getApplicationContext(), serviceIntent);
+    }
+
+    private void stopNewMessagesListener(){
+        Intent serviceIntent = new Intent(this, NewMessagesService.class);
+        stopService(serviceIntent);
+    }
 
     public void startExploring(View view){
         Intent i = new Intent(getBaseContext(), ExplorerActivity.class);
@@ -103,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
     public void logout(View view){
         mAuth.signOut();
         app.setUser(null);
+        stopNewMessagesListener();
         recreate();
     }
 

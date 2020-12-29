@@ -34,7 +34,7 @@ public class MessagingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_messaging);
         getSupportActionBar().hide();
 
-        convId = getIntent().getExtras().getString("id");
+        convId = getIntent().getExtras().getString("convId");
 
         app = (MyApplication) getApplication();
         databaseRef = FirebaseDatabase.getInstance().getReference();

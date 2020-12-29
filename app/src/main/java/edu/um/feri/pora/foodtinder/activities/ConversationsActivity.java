@@ -43,7 +43,7 @@ public class ConversationsActivity extends AppCompatActivity {
                 User user = app.getUser();
                 String id = user.getConversations().get(position);
                 Intent i = new Intent(ConversationsActivity.this, MessagingActivity.class);
-                i.putExtra("id", id);
+                i.putExtra("convId", id);
                 startActivity(i);
             }
         });

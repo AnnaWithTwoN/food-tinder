@@ -22,7 +22,7 @@ import edu.um.feri.pora.lib.User;
 public class MyApplication extends Application {
     public static final String CHANNEL_MESSAGES_ID = "Messages";
     public static final String CHANNEL_SERVICE_ID = "Services";
-    public static int notificationId = 0;
+    public static int notificationId = 2;
     private User user;
 
     public MyApplication() {
@@ -38,9 +38,8 @@ public class MyApplication extends Application {
     @TargetApi(Build.VERSION_CODES.O)
     private void registerNotificationChannels() {
         // Configure the channel
-        int importance = NotificationManager.IMPORTANCE_HIGH;
-        NotificationChannel channelMessages = new NotificationChannel(CHANNEL_MESSAGES_ID, "Messages Channel", importance);
-        NotificationChannel channelServices = new NotificationChannel(CHANNEL_SERVICE_ID, "Service Channel", importance);
+        NotificationChannel channelMessages = new NotificationChannel(CHANNEL_MESSAGES_ID, "Messages Channel", NotificationManager.IMPORTANCE_HIGH);
+        NotificationChannel channelServices = new NotificationChannel(CHANNEL_SERVICE_ID, "Service Channel", NotificationManager.IMPORTANCE_DEFAULT);
         channelMessages.setDescription("New message");
         channelServices.setDescription("Foreground service");
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

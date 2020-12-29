@@ -62,7 +62,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
     }
 
-    public MessagesAdapter(Context context, String convId, final String userId){
+    public MessagesAdapter(Context context, final String convId, final String userId){
         this.context = context;
         this.userId = userId;
         messages = new ArrayList<Message>();
@@ -73,10 +73,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
                 Message newMsg = snapshot.getValue(Message.class);
                 messages.add(newMsg);
                 notifyItemInserted(messages.size() - 1);
-
-                if(!newMsg.getSender().getId().equals(userId)) {
-                    createNotification(newMsg.getSender().getName(), newMsg.getBody(), newMsg.getSender().getPhotoUri());
-                }
             }
 
             @Override
@@ -91,34 +87,6 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
             @Override
             public void onCancelled(@NonNull DatabaseError error) {}
         });
-    }
-
-    private void createNotification(String title, String body, String photoUri){
-        Picasso.get().load(photoUri).into(new Target() {
-            @Override
-            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                senderImage = bitmap;
-            }
-            @Override
-            public void onBitmapFailed(Exception e, Drawable errorDrawable) {}
-            @Override
-            public void onPrepareLoad(Drawable placeHolderDrawable) {}
-        });
-
-        Intent intent = new Intent(context, MessagingActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        // put extras: id of conversation
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, MyApplication.CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_message_icon)
-                .setLargeIcon(senderImage)
-                .setContentTitle(title)
-                .setContentText(body)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pendingIntent);
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(MyApplication.notificationId++, builder.build());
     }
 
     @NonNull
