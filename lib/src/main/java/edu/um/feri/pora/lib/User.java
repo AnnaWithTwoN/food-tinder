@@ -1,7 +1,6 @@
 package edu.um.feri.pora.lib;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class User {
@@ -11,6 +10,8 @@ public class User {
     private List<String> likedBy = new ArrayList<>();
     private List<String> liked = new ArrayList<>();
     private List<String> conversations = new ArrayList<>();
+    private double latitude;
+    private double longitude;
 
     public User() { }
 
@@ -92,5 +93,21 @@ public class User {
 
     public void setLiked(List<String> liked) {
         this.liked = liked;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }
