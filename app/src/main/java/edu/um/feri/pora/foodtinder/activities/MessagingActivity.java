@@ -58,4 +58,10 @@ public class MessagingActivity extends AppCompatActivity {
             messageEditText.setText("");
         }
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 }

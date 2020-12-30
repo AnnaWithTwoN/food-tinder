@@ -8,6 +8,7 @@ public class Conversation {
     private User opponentA;
     private User opponentB;
     private HashMap<String, Message> messages;
+    private boolean opened;
 
     public Conversation() {
     }
@@ -50,5 +51,13 @@ public class Conversation {
 
     public void setMessages(HashMap<String, Message> messages) {
         this.messages = messages;
+    }
+
+    public boolean isOpened() {
+        return opened;
+    }
+
+    public void setOpened(boolean opened) {
+        this.opened = opened;
     }
 }

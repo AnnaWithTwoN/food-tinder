@@ -58,14 +58,13 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         }
     }
 
-    public MessagesAdapter(){
-
-    }
+    public MessagesAdapter(){}
 
     public MessagesAdapter(Context context, final String convId, final String userId){
         this.context = context;
         this.userId = userId;
         messages = new ArrayList<Message>();
+        FirebaseDatabase.getInstance().getReference("conversations").child(convId).child("opened").setValue(true);
 
         FirebaseDatabase.getInstance().getReference("conversations").child(convId).child("messages").addChildEventListener(new ChildEventListener() {
             @Override
@@ -73,6 +72,13 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
                 Message newMsg = snapshot.getValue(Message.class);
                 messages.add(newMsg);
                 notifyItemInserted(messages.size() - 1);
+
+                // set message to seen
+                if(!newMsg.isSeen() && !newMsg.getSender().equals(userId)) {
+                    newMsg.setSeen(true);
+                }
+
+                FirebaseDatabase.getInstance().getReference("conversations").child(convId).child("messages").child(snapshot.getKey()).setValue(newMsg);
             }
 
             @Override

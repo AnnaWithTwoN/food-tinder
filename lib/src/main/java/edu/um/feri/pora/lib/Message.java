@@ -7,6 +7,7 @@ public class Message {
     private User sender;
     private int length;
     private Date dateStamp;
+    private boolean seen;
 
     public Message(){ }
 
@@ -48,5 +49,13 @@ public class Message {
 
     public void setDateStamp(Date dateStamp) {
         this.dateStamp = dateStamp;
+    }
+
+    public boolean isSeen() {
+        return seen;
+    }
+
+    public void setSeen(boolean seen) {
+        this.seen = seen;
     }
 }

@@ -18,6 +18,7 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
@@ -54,11 +55,25 @@ public class NewMessagesService extends Service {
         FirebaseDatabase.getInstance().getReference("users").child(userId).child("conversations").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                String newConvId = snapshot.getValue(String.class);
+                final String newConvId = snapshot.getValue(String.class);
 
-                if (true) {
-                    createNewConvNotification("You have a new match!", "Check it out!", newConvId);
-                }
+                FirebaseDatabase.getInstance().getReference("conversations")
+                        .child(newConvId)
+                        .child("opened")
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                Boolean newConvWasOpened = snapshot.getValue(Boolean.class);
+
+                                if (!newConvWasOpened) {
+                                    createNewConvNotification("You have a new match!", "Check it out!", newConvId);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {}
+                        });
             }
 
             @Override
@@ -81,7 +96,7 @@ public class NewMessagesService extends Service {
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     Message newMsg = snapshot.getValue(Message.class);
 
-                    if (!newMsg.getSender().getId().equals(userId)) {
+                    if (!newMsg.isSeen() && !newMsg.getSender().getId().equals(userId)) {
                         createNewMsgNotification(newMsg.getSender().getName(), newMsg.getBody(), newMsg.getSender().getPhotoUri(), convId);
                     }
                 }
