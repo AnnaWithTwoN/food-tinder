@@ -19,7 +19,7 @@
             app:tabTextColor="@color/colorPrimaryDark"/>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.viewpager.widget.ViewPager
+    <edu.um.feri.pora.foodtinder.adapters.ViewPagerWrapper
         android:id="@+id/fragment_placeholder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

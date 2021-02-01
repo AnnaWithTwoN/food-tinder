@@ -1,6 +1,8 @@
 package edu.um.feri.pora.foodtinder.activities;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -9,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import edu.um.feri.pora.foodtinder.R;
 import edu.um.feri.pora.foodtinder.adapters.SectionsPagerAdapter;
+import edu.um.feri.pora.foodtinder.adapters.ViewPagerWrapper;
 
 public class ExplorerActivity extends AppCompatActivity {
 
@@ -19,7 +22,7 @@ public class ExplorerActivity extends AppCompatActivity {
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
 
-        ViewPager fragment_placeholder = findViewById(R.id.fragment_placeholder);
+        ViewPagerWrapper fragment_placeholder = findViewById(R.id.fragment_placeholder);
         fragment_placeholder.setAdapter(sectionsPagerAdapter);
 
         TabLayout tabs = findViewById(R.id.tabs);
