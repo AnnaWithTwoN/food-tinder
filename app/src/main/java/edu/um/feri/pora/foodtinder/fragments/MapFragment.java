@@ -1,7 +1,9 @@
-package edu.um.feri.pora.foodtinder.activities;
+package edu.um.feri.pora.foodtinder.fragments;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +12,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,27 +35,32 @@ import java.util.List;
 
 import edu.um.feri.pora.foodtinder.MyApplication;
 import edu.um.feri.pora.foodtinder.R;
+import edu.um.feri.pora.foodtinder.activities.ExplorerActivity;
 import edu.um.feri.pora.lib.User;
 
-public class MapActivity extends AppCompatActivity {
+public class MapFragment extends Fragment {
     private User user;
     private MapView map;
     private Marker marker;
     private List<TargetAdapter> targets;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
-        getSupportActionBar().hide();
+    public static MapFragment newInstance() {
+        MapFragment fragment = new MapFragment();
+        return fragment;
+    }
 
-        user = ((MyApplication) getApplication()).getUser();
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_map, container, false);
+
+        user = ((MyApplication)((ExplorerActivity) requireActivity()).getApplication()).getUser();
         targets = new ArrayList<>();
 
-        Context ctx = getApplicationContext();
-        Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
+        //Context ctx = getContext();
+        //Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
 
-        map = (MapView) findViewById(R.id.map);
+        map = (MapView) root.findViewById(R.id.map);
         map.setTileSource(TileSourceFactory.MAPNIK);
         map.setMultiTouchControls(true);
 
@@ -71,8 +80,6 @@ public class MapActivity extends AppCompatActivity {
                     Log.d("marker", "came - " + p.getName());
                     putMarker(p);
                 }
-
-
             }
 
             @Override
@@ -80,7 +87,7 @@ public class MapActivity extends AppCompatActivity {
                 // TODO error handling
             }
         });
-
+        return root;
     }
 
     private class TargetAdapter extends View implements Target{
@@ -141,7 +148,7 @@ public class MapActivity extends AppCompatActivity {
         marker2.setTextLabelFontSize(20);
         marker2.setTextIcon("text");*/
 
-        TargetAdapter targetAdapter = new TargetAdapter(this, user);
+        TargetAdapter targetAdapter = new TargetAdapter(getContext(), user);
         targets.add(targetAdapter);
         Picasso.get().load(user.getPhotoUri()).into(targetAdapter);
 

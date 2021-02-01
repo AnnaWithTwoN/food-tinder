@@ -35,6 +35,8 @@ import java.util.ArrayList;
 import edu.um.feri.pora.foodtinder.MyApplication;
 import edu.um.feri.pora.foodtinder.NewMessagesService;
 import edu.um.feri.pora.foodtinder.R;
+import edu.um.feri.pora.foodtinder.fragments.CardSwipeFragment;
+import edu.um.feri.pora.foodtinder.fragments.MapFragment;
 import edu.um.feri.pora.lib.User;
 
 public class MainActivity extends AppCompatActivity {
@@ -165,11 +167,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void openConversations(View view){
         Intent i = new Intent(getBaseContext(), ConversationsActivity.class);
-        startActivity(i);
-    }
-
-    public void openMap(View view){
-        Intent i = new Intent(getBaseContext(), MapActivity.class);
         startActivity(i);
     }
 

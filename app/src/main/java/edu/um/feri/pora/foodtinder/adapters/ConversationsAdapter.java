@@ -1,4 +1,4 @@
-package edu.um.feri.pora.foodtinder.rvadapters;
+package edu.um.feri.pora.foodtinder.adapters;
 
 import android.util.Log;
 import android.view.LayoutInflater;

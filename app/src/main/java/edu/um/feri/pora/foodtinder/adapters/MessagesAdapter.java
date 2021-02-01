@@ -1,17 +1,12 @@
-package edu.um.feri.pora.foodtinder.rvadapters;
+package edu.um.feri.pora.foodtinder.adapters;
 
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
-import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,16 +18,12 @@ import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.um.feri.pora.foodtinder.MyApplication;
 import edu.um.feri.pora.foodtinder.R;
-import edu.um.feri.pora.foodtinder.activities.MessagingActivity;
 import edu.um.feri.pora.lib.Message;
 
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHolder> {
@@ -99,7 +90,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
     @Override
     public MessagesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.message_item, parent, false);
+        View view = inflater.inflate(R.layout.item_message, parent, false);
         MessagesAdapter.ViewHolder viewHolder = new MessagesAdapter.ViewHolder(view);
         return viewHolder;
     }

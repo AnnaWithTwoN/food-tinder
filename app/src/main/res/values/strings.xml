@@ -23,4 +23,7 @@
     <string name="enter_name_of_dish">Enter name of dish</string>
     <string name="sign_up">Sign up</string>
     <string name="choose_a_photo">Choose a photo</string>
+    <string name="title_activity_explorer">ExplorerActivity</string>
+    <string name="tab_text_1">Observer</string>
+    <string name="tab_text_2">Map</string>
 </resources>

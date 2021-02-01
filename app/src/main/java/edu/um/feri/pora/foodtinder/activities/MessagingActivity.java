@@ -11,7 +11,7 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import edu.um.feri.pora.foodtinder.rvadapters.MessagesAdapter;
+import edu.um.feri.pora.foodtinder.adapters.MessagesAdapter;
 import edu.um.feri.pora.foodtinder.MyApplication;
 import edu.um.feri.pora.foodtinder.R;
 import edu.um.feri.pora.lib.Message;
